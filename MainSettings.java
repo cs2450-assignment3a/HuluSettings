@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -8,6 +9,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.shape.*;
 
@@ -26,7 +28,7 @@ public class MainSettings extends Application {
 
         //background area
         VBox backgroundBox = new VBox();
-        backgroundBox.setStyle("-fx-background-color: DARKCYAN");
+        //backgroundBox.setStyle("-fx-background-color: DARKCYAN");
 
 
         //spacer for top portion of the app
@@ -39,12 +41,21 @@ public class MainSettings extends Application {
 
         //init profile objects
         Label profileLabel = new Label("PROFILE");
-        Circle profileCircle = new Circle(30);  //profile image
+        Circle profileCircle = new Circle(35);  //profile image
         Label nameText = new Label("NAME"); //name text
         
 
-        //change styels
-        //make the circle clear with a border
+        //change styles
+        profileLabel.getStyleClass().add("profile-area-label");
+        profileCircle.getStyleClass().add("profile-image-circle");
+        nameText.getStyleClass().add("profile-name-text");
+
+        profileLabel.setPadding(new Insets(5, 0, 25, 0));
+        nameText.setPadding(new Insets(10, 0, 10, 0));
+
+        profileCircle.setFill(Color.TRANSPARENT);
+        profileCircle.setStroke(Color.WHITE);
+        
 
         //add profile objects to panes
         profileBox.getChildren().addAll(profileLabel, profileCircle, nameText);
@@ -69,8 +80,15 @@ public class MainSettings extends Application {
         Button subscriptionButton = new  Button("Subscription");
         Button manageAccountButton = new  Button("Manage Account");
 
+        notificationsButton.getStyleClass().add("main-button");
+        settingsButton.getStyleClass().add("main-button");
+        paymentButton.getStyleClass().add("main-button");
+        personalInfoButton.getStyleClass().add("main-button");
+        subscriptionButton.getStyleClass().add("main-button");
+        manageAccountButton.getStyleClass().add("main-button");
+
         //change styles
-        int mainButtonWidth = windowWidth - 10;
+        int mainButtonWidth = windowWidth - 40;
         int mainButtonHeight = 50;
 
         //setting button sizes
@@ -90,6 +108,7 @@ public class MainSettings extends Application {
         //add buttons to buttonsBox
         buttonsBox.getChildren().addAll(notificationsButton, settingsButton, paymentButton, personalInfoButton, subscriptionButton, manageAccountButton);
         buttonsBox.setAlignment(Pos.CENTER);
+        buttonsBox.setSpacing(5);
 
         //add the buttons box to background box
         backgroundBox.getChildren().add(buttonsBox);
@@ -110,6 +129,11 @@ public class MainSettings extends Application {
         Button aboutHuluButton = new Button("About Hulu");
         Button logOutButton = new Button("Log Out");
 
+        //set classes for css file
+        helpCenterButton.getStyleClass().add("helparea-button");
+        aboutHuluButton.getStyleClass().add("helparea-button");
+        logOutButton.getStyleClass().add("helparea-button");
+
         //edit styles
         int subButtonWidth = 100;
         int subButtonHeight = 40;
@@ -127,23 +151,34 @@ public class MainSettings extends Application {
         //add help area box to background box
         backgroundBox.getChildren().add(helpArea);
 
-        //bottom nav bar area
-        //toggle buttons
-        ToggleButton homeButton = new ToggleButton("H");
-        ToggleButton myStuffButton = new ToggleButton("MS");
-        ToggleButton downloadsButton = new ToggleButton("D");
-        ToggleButton searchButton = new ToggleButton("S");
-        ToggleButton profileButton = new ToggleButton("P");
+        
 
-        //setting size of buttons
-        /*
-        int toggleButtonWidth = 12, toggleButtonHeight = 12;
-        homeButton.setPrefSize(toggleButtonWidth, toggleButtonHeight);
-        myStuffButton.setPrefSize(toggleButtonWidth, toggleButtonHeight);
-        downloadsButton.setPrefSize(toggleButtonWidth, toggleButtonHeight);
-        searchButton.setPrefSize(toggleButtonWidth, toggleButtonHeight);
-        profileButton.setPrefSize(toggleButtonWidth, toggleButtonHeight);
-        */
+        //bottom nav bar area
+        int navbarHeight = 33;
+        int navbarButtonHeight = navbarHeight;
+
+        //toggle buttons
+        ToggleButton homeButton = new ToggleButton("HOME");
+        ToggleButton myStuffButton = new ToggleButton("MY STUFF");
+        ToggleButton downloadsButton = new ToggleButton("DOWNLOADS");
+        ToggleButton searchButton = new ToggleButton("SEARCH");
+        ToggleButton profileButton = new ToggleButton("PROFILE");
+
+        //set style sheet classes
+        homeButton.getStyleClass().add("nav-bar-button");
+        myStuffButton.getStyleClass().add("nav-bar-button");
+        downloadsButton.getStyleClass().add("nav-bar-button");
+        searchButton.getStyleClass().add("nav-bar-button");
+        profileButton.getStyleClass().add("nav-bar-button");
+        
+        //set size of toggle buttons
+        int toggleButtonWidth = 38;
+        homeButton.setPrefSize(toggleButtonWidth, navbarButtonHeight);
+        myStuffButton.setPrefSize(toggleButtonWidth + 12, navbarButtonHeight);
+        downloadsButton.setPrefSize(toggleButtonWidth + 20, navbarButtonHeight);
+        searchButton.setPrefSize(toggleButtonWidth + 10, navbarButtonHeight);
+        profileButton.setPrefSize(toggleButtonWidth, navbarButtonHeight);
+        
 
         //add to toggle group
         ToggleGroup toggleGroup = new ToggleGroup();
@@ -157,14 +192,17 @@ public class MainSettings extends Application {
         //add bottom nav bar to pane
         HBox bottomNavBarBox = new HBox(homeButton, myStuffButton, downloadsButton, searchButton, profileButton);
         bottomNavBarBox.setMaxWidth(windowWidth);
-        bottomNavBarBox.setPrefHeight(33);
+        bottomNavBarBox.setPrefHeight(navbarHeight);
+        bottomNavBarBox.getStyleClass().add("bottom-nav-bar");
         bottomNavBarBox.setStyle("-fx-background-color: BLACK");
-        bottomNavBarBox.setSpacing(windowWidth/11);
+        bottomNavBarBox.setSpacing(windowWidth/16);
 
         //make a border pane for the nav bar and add it to the backgrond box
         BorderPane bottomBorderPane = new BorderPane();
         bottomBorderPane.setBottom(bottomNavBarBox);
         backgroundBox.getChildren().add(bottomBorderPane);
+
+
 
 
         //set up button funcitonality
@@ -173,44 +211,45 @@ public class MainSettings extends Application {
             System.out.println("Notifications button clicked!");
         });
 
-        //add the functinality for the rest of the buttons here
-
         settingsButton.setOnAction(value -> {
-            //open notifications window
+            //open settings window
             System.out.println("Settings button clicked!");
         });
 
         paymentButton.setOnAction(value -> {
-            //open notifications window
+            //open payment window
             System.out.println("Payment button clicked!");
         });
 
         personalInfoButton.setOnAction(value -> {
-            //open notifications window
+            //open personal info window
             System.out.println("Personal info button clicked!");
         });
 
         subscriptionButton.setOnAction(value -> {
-            //open notifications window
+            //open subscritption window
             System.out.println("Subscription button clicked!");
 
+            //make new windows
             Subscription subWindow = new Subscription();
             Stage subscriptionStage = new Stage();
 
+            //make windows visible
             subWindow.start(subscriptionStage);
             subscriptionStage.show();
         });
 
         manageAccountButton.setOnAction(value -> {
-            //open notifications window
+            //open account management window
             System.out.println("Notifications button clicked!");
         });
 
 
-
-
         //init the scene
         Scene scene = new Scene(backgroundBox, windowWidth, windowHeight);
+
+        //add css file
+        scene.getStylesheets().add("mainsettings.css");
 
         //set the stage
         primaryStage.setTitle("Hulu");

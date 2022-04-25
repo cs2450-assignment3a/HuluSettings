@@ -1,0 +1,47 @@
+.root{
+    background-color: linear-gradient(to top, black, rgb(2, 90, 90));
+    -fx-background-color : linear-gradient(to top, black, rgb(2, 90, 90));
+}
+
+.profile-area-label {
+    font-size: 10pt;
+    -fx-font-size: 10pt;
+    font-weight: 500;
+    -fx-font-weight: 500;
+    -fx-text-fill: white;
+}
+
+.profile-name-text {
+    font-size: 15pt;
+    -fx-font-size: 15pt;
+    -fx-text-fill: rgb(152, 255, 152);
+}
+
+ .main-button {
+     font-size: 11pt;
+     -fx-font-size: 11pt;
+     font-weight: 500;
+     -fx-font-weight: 500;
+     -fx-text-fill: rgb(255, 240, 255);
+     background-color: rgb(91, 120, 120);
+     -fx-background-color: rgb(91, 120, 120);
+     -fx-background-radius: 8px;
+ }
+
+ .helparea-button {
+     background-color: transparent;
+     -fx-background-color: transparent;
+     -fx-text-fill: rgb(255, 240, 255);
+     -fx-alignment: left;
+ }
+
+ .nav-bar-button {
+     font-size: 5pt;
+    -fx-font-size: 5pt;
+    font-weight: 700;
+    -fx-font-weight: 700;
+    -fx-text-fill: rgb(255, 240, 255);
+    background-color: transparent;
+    -fx-background-color : transparent;
+    -fx-text-alignment: center;
+ }
