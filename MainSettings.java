@@ -175,6 +175,38 @@ public class MainSettings extends Application {
 
         //add the functinality for the rest of the buttons here
 
+        settingsButton.setOnAction(value -> {
+            //open notifications window
+            System.out.println("Settings button clicked!");
+        });
+
+        paymentButton.setOnAction(value -> {
+            //open notifications window
+            System.out.println("Payment button clicked!");
+        });
+
+        personalInfoButton.setOnAction(value -> {
+            //open notifications window
+            System.out.println("Personal info button clicked!");
+        });
+
+        subscriptionButton.setOnAction(value -> {
+            //open notifications window
+            System.out.println("Subscription button clicked!");
+
+            Subscription subWindow = new Subscription();
+            Stage subscriptionStage = new Stage();
+
+            subWindow.start(subscriptionStage);
+            subscriptionStage.show();
+        });
+
+        manageAccountButton.setOnAction(value -> {
+            //open notifications window
+            System.out.println("Notifications button clicked!");
+        });
+
+
 
 
         //init the scene
