@@ -6,9 +6,25 @@
 .profile-area-label {
     font-size: 10pt;
     -fx-font-size: 10pt;
-    font-weight: 500;
+    font-weight: bold;
     -fx-font-weight: 500;
     -fx-text-fill: white;
+}
+
+.profile-manage-button {
+    font-size: 10pt;
+    -fx-font-size: 10pt;
+    -fx-text-fill: white;
+    background-color: transparent;
+    -fx-background-color: transparent;
+
+}
+
+.profile-image-circle {
+    border-color: white;
+    -fx-border-color: white;
+    background-color: rgb(208, 208, 208);
+    -fx-background-color: rgb(208, 208, 208);
 }
 
 .profile-name-text {

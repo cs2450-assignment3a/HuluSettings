@@ -41,16 +41,19 @@ public class MainSettings extends Application {
 
         //init profile objects
         Label profileLabel = new Label("PROFILE");
+        Button manageProfilesButton = new  Button("Manage Profiles");
         Circle profileCircle = new Circle(35);  //profile image
         Label nameText = new Label("NAME"); //name text
         
 
         //change styles
         profileLabel.getStyleClass().add("profile-area-label");
+        manageProfilesButton.getStyleClass().add("profile-manage-button");
         profileCircle.getStyleClass().add("profile-image-circle");
         nameText.getStyleClass().add("profile-name-text");
 
-        profileLabel.setPadding(new Insets(5, 0, 25, 0));
+        profileLabel.setPadding(new Insets(5, 0, 15, 0));
+        manageProfilesButton.setPadding(new Insets(0, 0, 10, 0));
         nameText.setPadding(new Insets(10, 0, 10, 0));
 
         profileCircle.setFill(Color.TRANSPARENT);
@@ -58,7 +61,7 @@ public class MainSettings extends Application {
         
 
         //add profile objects to panes
-        profileBox.getChildren().addAll(profileLabel, profileCircle, nameText);
+        profileBox.getChildren().addAll(profileLabel,manageProfilesButton, profileCircle, nameText);
         profileBox.setAlignment(Pos.CENTER);
 
         //add  the profile pane to  the  bakgroundBox
@@ -73,27 +76,22 @@ public class MainSettings extends Application {
         VBox buttonsBox = new VBox();
 
         //initialize our buttons
-        Button notificationsButton = new Button("Notifications");
         Button settingsButton = new Button("Settings");
         Button paymentButton =  new Button("Payment Info");
         Button personalInfoButton = new  Button("Personal Info");
-        Button subscriptionButton = new  Button("Subscription");
-        Button manageAccountButton = new  Button("Manage Account");
+        Button subscriptionButton = new  Button("Manage Subscription");
+        
 
-        notificationsButton.getStyleClass().add("main-button");
         settingsButton.getStyleClass().add("main-button");
         paymentButton.getStyleClass().add("main-button");
         personalInfoButton.getStyleClass().add("main-button");
         subscriptionButton.getStyleClass().add("main-button");
-        manageAccountButton.getStyleClass().add("main-button");
 
         //change styles
         int mainButtonWidth = windowWidth - 40;
         int mainButtonHeight = 50;
 
         //setting button sizes
-        notificationsButton.setPrefHeight(mainButtonHeight);
-        notificationsButton.setPrefWidth(mainButtonWidth);
         settingsButton.setPrefHeight(mainButtonHeight);
         settingsButton.setPrefWidth(mainButtonWidth);
         paymentButton.setPrefHeight(mainButtonHeight);
@@ -102,11 +100,9 @@ public class MainSettings extends Application {
         personalInfoButton.setPrefWidth(mainButtonWidth);
         subscriptionButton.setPrefHeight(mainButtonHeight);
         subscriptionButton.setPrefWidth(mainButtonWidth);
-        manageAccountButton.setPrefHeight(mainButtonHeight);
-        manageAccountButton.setPrefWidth(mainButtonWidth);
 
         //add buttons to buttonsBox
-        buttonsBox.getChildren().addAll(notificationsButton, settingsButton, paymentButton, personalInfoButton, subscriptionButton, manageAccountButton);
+        buttonsBox.getChildren().addAll(personalInfoButton, paymentButton, subscriptionButton, settingsButton);
         buttonsBox.setAlignment(Pos.CENTER);
         buttonsBox.setSpacing(5);
 
@@ -206,11 +202,6 @@ public class MainSettings extends Application {
 
 
         //set up button funcitonality
-        notificationsButton.setOnAction(value -> {
-            //open notifications window
-            System.out.println("Notifications button clicked!");
-        });
-
         settingsButton.setOnAction(value -> {
             //open settings window
             System.out.println("Settings button clicked!");
@@ -219,11 +210,32 @@ public class MainSettings extends Application {
         paymentButton.setOnAction(value -> {
             //open payment window
             System.out.println("Payment button clicked!");
+
+            //make new windows
+            payment paymentWindow = new payment();
+            Stage paymentStage = new Stage();
+
+            //make windows visible
+            try {
+                paymentWindow.start(paymentStage);
+            }
+            catch (Exception e) {
+                System.out.println("There was a problem opening the payment page");
+            }
+            paymentStage.show();
         });
 
         personalInfoButton.setOnAction(value -> {
             //open personal info window
             System.out.println("Personal info button clicked!");
+
+            //make new windows
+            MyProfile personalInfoWindow = new MyProfile();
+            Stage personalInfoStage = new Stage();
+
+            //make windows visible
+            personalInfoWindow.start(personalInfoStage);
+            personalInfoStage.show();
         });
 
         subscriptionButton.setOnAction(value -> {
@@ -239,9 +251,17 @@ public class MainSettings extends Application {
             subscriptionStage.show();
         });
 
-        manageAccountButton.setOnAction(value -> {
+        manageProfilesButton.setOnAction(value -> {
             //open account management window
             System.out.println("Notifications button clicked!");
+
+            //make new windows
+            SwitchProfile manageAccountWindow = new SwitchProfile();
+            Stage manageAccountStage = new Stage();
+
+            //make windows visible
+            manageAccountWindow.start(manageAccountStage);
+            manageAccountStage.show();
         });
 
 
